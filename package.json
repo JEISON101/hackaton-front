@@ -12,6 +12,7 @@
   "dependencies": {
     "@cloudinary/react": "^1.14.3",
     "@cloudinary/url-gen": "^1.22.0",
+    "@n8n/chat": "^0.64.0",
     "@supabase/supabase-js": "^2.80.0",
     "@tailwindcss/vite": "^4.1.16",
     "@tremor/react": "^3.18.7",
