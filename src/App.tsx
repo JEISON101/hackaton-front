@@ -1,7 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
 import Landing from "./pages/Landing";
-import AuthPage from "./pages/AuthPage";
 import Dashboard from "./pages/Dashboard";
 import Productos from "./pages/Productos";
 import Sucurasales from "./pages/Sucurasales";
@@ -17,7 +16,6 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Landing />} />
-          <Route path="/auth" element={<AuthPage />} />
           <Route element={<RutaPrivada />}>
             <Route element={<RenderVistas />}>
               <Route path="/dashboard" element={<Dashboard />} />
