@@ -121,10 +121,10 @@ const Ventas = () => {
           Todas las Ventas
         </h2>
 
-        <button className="flex gap-2 items-center py-2 px-4 text-white bg-green-600 hover:bg-green-700 rounded-lg">
+{/*         <button className="flex gap-2 items-center py-2 px-4 text-white bg-green-600 hover:bg-green-700 rounded-lg">
           <MdOutlineShoppingCartCheckout size={24}/>
           Registrar venta
-        </button>
+        </button> */}
         </div>
 
         {sales.length === 0 ? (
