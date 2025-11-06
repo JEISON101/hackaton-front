@@ -1,13 +1,10 @@
-import { Link, useNavigate } from "react-router-dom";
+import type { JSX } from "react";
+import { BsBoxSeam, BsBuildings } from "react-icons/bs";
 import { FaBars } from "react-icons/fa";
 import { FiUsers } from "react-icons/fi";
-import { PiUsersThree, PiStorefrontLight } from "react-icons/pi";
 import { LuLayoutDashboard, LuLogOut } from "react-icons/lu";
-import { BsBuildings, BsBoxSeam } from "react-icons/bs";
-import type { JSX } from "react";
-
-const ICONO =
-  "https://www.shutterstock.com/image-vector/mens-tshirt-hanger-logo-design-600w-2610960209.jpg";
+import { PiStorefrontLight, PiUsersThree } from "react-icons/pi";
+import { Link, useNavigate } from "react-router-dom";
 
 type PropsSideBar = {
   cerrado: boolean;
@@ -27,7 +24,7 @@ const SideBar: React.FC<PropsSideBar> = ({ cerrado, setCerrado }) => {
     { path: "/dashboard", label: "Dashboard", icon: <LuLayoutDashboard /> },
     { path: "/productos", label: "Productos", icon: <BsBoxSeam /> },
     { path: "/clientes", label: "Clientes", icon: <FiUsers /> },
-    { path: "/empleados", label: "Empleados", icon: <PiUsersThree /> },
+    { path: "/users", label: "Usuarios", icon: <PiUsersThree /> },
     { path: "/ventas", label: "Ventas", icon: <PiStorefrontLight /> },
     { path: "/sucursales", label: "Sucursales", icon: <BsBuildings /> },
   ];
@@ -42,9 +39,7 @@ const SideBar: React.FC<PropsSideBar> = ({ cerrado, setCerrado }) => {
       className={`fixed top-0 left-0 h-screen 
       bg-white/80 backdrop-blur-lg shadow-xl
       border-r border-gray-200 flex flex-col
-      transition-all duration-300 ${
-        cerrado ? "w-20" : "w-60"
-      }`}
+      transition-all duration-300 ${cerrado ? "w-20" : "w-60"}`}
     >
       {/* HEADER */}
       <div className="flex items-center justify-between px-4 py-3 border-b border-gray-200">
@@ -54,8 +49,6 @@ const SideBar: React.FC<PropsSideBar> = ({ cerrado, setCerrado }) => {
         >
           <FaBars className="text-xl" />
         </button>
-
-        
       </div>
 
       {/* CONTENEDOR PRINCIPAL */}
@@ -69,9 +62,7 @@ const SideBar: React.FC<PropsSideBar> = ({ cerrado, setCerrado }) => {
               className="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gradient-to-r hover:from-indigo-50 hover:to-cyan-50 hover:text-indigo-700 transition-all duration-200"
             >
               <span className="text-xl text-indigo-500">{icon}</span>
-              {!cerrado && (
-                <span className="text-sm font-medium">{label}</span>
-              )}
+              {!cerrado && <span className="text-sm font-medium">{label}</span>}
             </Link>
           ))}
         </nav>
