@@ -1,8 +1,30 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { CiWarning } from "react-icons/ci";
 import { FaBoxOpen } from "react-icons/fa";
+import supabase from "../../utils/supabase";
 
 const DataStock: React.FC = () => {
+  useEffect(() => {
+  const loadData = async () => {
+    const { data, error } = await supabase.from("detalleventas").select(`
+      idproducto,
+      cantidadproducto,
+      subtotal,
+      producto:productos(nombre, stock)
+    `).order('cantidadproducto', { ascending: false });
+
+    if (error) {
+      console.error(error);
+    } else {
+        console.log(data)
+    }
+  };
+  loadData();
+}, []);
+
+
+
+
   // Datos simulados
   const topVendidos = [
     { nombre: "Camisa Manga Larga", vendidos: 1200 },
@@ -31,9 +53,13 @@ const DataStock: React.FC = () => {
             >
               <div className="flex items-center gap-3">
                 <FaBoxOpen className="text-indigo-500 text-xl" />
-                <span className="font-medium text-gray-700">{producto.nombre}</span>
+                <span className="font-medium text-gray-700">
+                  {producto.nombre}
+                </span>
               </div>
-              <span className="text-gray-600 font-semibold">{producto.vendidos}</span>
+              <span className="text-gray-600 font-semibold">
+                {producto.vendidos}
+              </span>
             </li>
           ))}
         </ul>
@@ -52,9 +78,13 @@ const DataStock: React.FC = () => {
             >
               <div className="flex items-center gap-3">
                 <CiWarning className="text-red-500 text-xl" />
-                <span className="font-medium text-gray-700">{producto.nombre}</span>
+                <span className="font-medium text-gray-700">
+                  {producto.nombre}
+                </span>
               </div>
-              <span className="text-gray-600 font-semibold">{producto.stock}</span>
+              <span className="text-gray-600 font-semibold">
+                {producto.stock}
+              </span>
             </li>
           ))}
         </ul>

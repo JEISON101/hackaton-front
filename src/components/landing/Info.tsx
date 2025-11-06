@@ -8,7 +8,7 @@ const Info: React.FC = () => {
     <div className="max-w-lg">
       {/* Título principal */}
       <h1 className="text-4xl font-extraligth text-gray-800 mb-2">
-        Sistema Profesional de Gestión
+        Sistema Profesional de Gestión BLESSCARD
       </h1>
       <h2 className="text-lg text-indigo-600 font-medium mb-4">
         Gestiona tu tienda de forma
