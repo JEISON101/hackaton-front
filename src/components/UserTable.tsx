@@ -4,7 +4,6 @@ import { getUsers } from "../services/userService";
 
 interface User {
   id: number;
-  idrol: number;
   nombres: string;
   apellidos: string;
   documento: string;
@@ -32,7 +31,6 @@ const UserTable = () => {
         <thead>
           <tr>
             <th className="px-4 py-2 border">ID</th>
-            <th className="px-4 py-2 border">Rol</th>
             <th className="px-4 py-2 border">Nombres</th>
             <th className="px-4 py-2 border">Apellidos</th>
             <th className="px-4 py-2 border">Documento</th>
@@ -46,7 +44,7 @@ const UserTable = () => {
           {users.map((user) => (
             <tr key={user.id}>
               <td className="px-4 py-2 border">{user.id}</td>
-              <td className="px-4 py-2 border">{user.idrol}</td>
+            
               <td className="px-4 py-2 border">{user.nombres}</td>
               <td className="px-4 py-2 border">{user.apellidos}</td>
               <td className="px-4 py-2 border">{user.documento}</td>
