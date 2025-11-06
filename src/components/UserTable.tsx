@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { getUsers } from "../services/userService";
 
-
 interface User {
   id: number;
   nombres: string;
@@ -12,6 +11,28 @@ interface User {
   genero: string;
   tipodocumento: string;
 }
+
+const UserCard = ({ user }: { user: User }) => (
+  <div className="bg-white border border-gray-200 p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+    <div className="mb-4">
+      <h2 className="text-lg font-bold text-gray-800">
+        {user.nombres} {user.apellidos}
+      </h2>
+      <p className="text-sm text-gray-600">{user.email}</p>
+    </div>
+    <p className="text-sm text-gray-600 mb-2">
+      <span className="font-semibold">Documento:</span> {user.tipodocumento}{" "}
+      {user.documento}
+    </p>
+    <p className="text-sm text-gray-600 mb-2">
+      <span className="font-semibold">Fecha de Nacimiento:</span>{" "}
+      {user.fechanacimiento}
+    </p>
+    <p className="text-sm text-gray-600 mb-2">
+      <span className="font-semibold">Género:</span> {user.genero}
+    </p>
+  </div>
+);
 
 const UserTable = () => {
   const [users, setUsers] = useState<User[]>([]);
@@ -26,36 +47,10 @@ const UserTable = () => {
   }, []);
 
   return (
-    <div className="overflow-x-auto">
-      <table className="min-w-full bg-white border border-gray-200">
-        <thead>
-          <tr>
-            <th className="px-4 py-2 border">ID</th>
-            <th className="px-4 py-2 border">Nombres</th>
-            <th className="px-4 py-2 border">Apellidos</th>
-            <th className="px-4 py-2 border">Documento</th>
-            <th className="px-4 py-2 border">Email</th>
-            <th className="px-4 py-2 border">Fecha de Nacimiento</th>
-            <th className="px-4 py-2 border">Género</th>
-            <th className="px-4 py-2 border">Tipo de Documento</th>
-          </tr>
-        </thead>
-        <tbody>
-          {users.map((user) => (
-            <tr key={user.id}>
-              <td className="px-4 py-2 border">{user.id}</td>
-            
-              <td className="px-4 py-2 border">{user.nombres}</td>
-              <td className="px-4 py-2 border">{user.apellidos}</td>
-              <td className="px-4 py-2 border">{user.documento}</td>
-              <td className="px-4 py-2 border">{user.email}</td>
-              <td className="px-4 py-2 border">{user.fechanacimiento}</td>
-              <td className="px-4 py-2 border">{user.genero}</td>
-              <td className="px-4 py-2 border">{user.tipodocumento}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {users.map((user) => (
+        <UserCard key={user.id} user={user} />
+      ))}
     </div>
   );
 };
