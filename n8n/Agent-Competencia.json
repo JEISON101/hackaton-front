@@ -1,0 +1,182 @@
+{
+  "name": "Agent-Competencia",
+  "nodes": [
+    {
+      "parameters": {
+        "public": true,
+        "mode": "webhook",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        1264,
+        -160
+      ],
+      "id": "e12a86d1-b3a8-488e-b938-5cd7013342c4",
+      "name": "When chat message received",
+      "webhookId": "e8156249-8860-4140-9880-1b61133b60d4"
+    },
+    {
+      "parameters": {
+        "options": {
+          "systemMessage": "Eres un asistente experto en análisis de ventas y gestión de productos para la empresa Blesscard. \nTienes acceso a la base de datos con los siguientes tipos de información:\n\n- Productos: nombre, categoría, stock, precio, fecha de creación, descripción.\n- Detalleventas: producto vendido, cantidad, total de la venta, fecha de venta, cliente.\n\nTu tarea es:\n\n1. Responder preguntas de manera clara y concisa sobre:\n   - Productos más vendidos en un periodo de tiempo.\n   - Ventas totales, promedio y tendencias.\n   - Comparaciones entre productos y categorías.\n   - Sugerencias para mejorar las ventas basadas en los datos.\n\n2. Explicar cualquier métrica o análisis que muestres, usando ejemplos de los datos si es posible.\n\n3. Siempre que el usuario pregunte algo, intenta mostrar *resumen + insight útil*.\n\n4. Si la pregunta no puede responderse con la información disponible, explica por qué y sugiere qué dato adicional sería útil.\n\nEjemplos de preguntas que puedes responder:\n\n- “¿Cuáles fueron los 5 productos más vendidos este mes?”\n- “¿Qué productos tuvieron menos ventas y por qué?”\n- “¿Cómo puedo aumentar las ventas en la categoría X?”\nNo alucines y siempre consulta con las tools en la base de dato para tener información actualizada"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.2,
+      "position": [
+        1472,
+        -160
+      ],
+      "id": "43064690-1b74-425a-a046-4b1880f39c3b",
+      "name": "Agent 1"
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        1488,
+        48
+      ],
+      "id": "0c16c841-3065-4343-8943-5c21a2ee7875",
+      "name": "Simple Memory1"
+    },
+    {
+      "parameters": {
+        "model": "nvidia/nemotron-nano-12b-v2-vl:free",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "typeVersion": 1,
+      "position": [
+        1344,
+        48
+      ],
+      "id": "cb365ca8-9a8b-4315-be32-a7ab9fad5308",
+      "name": "OpenRouter Chat Model1",
+      "credentials": {
+        "openRouterApi": {
+          "id": "Jqro6ah4XpCIDgXs",
+          "name": "OpenRouter account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "tableId": "productos",
+        "limit": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Limit', ``, 'number') }}"
+      },
+      "type": "n8n-nodes-base.supabaseTool",
+      "typeVersion": 1,
+      "position": [
+        1648,
+        48
+      ],
+      "id": "a4831e33-e92e-4e34-be3a-1ad826004b23",
+      "name": "productos",
+      "credentials": {
+        "supabaseApi": {
+          "id": "VoGoRuXzMLVJz79e",
+          "name": "COCOCOCO"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "tableId": "ventas",
+        "limit": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Limit', ``, 'number') }}"
+      },
+      "type": "n8n-nodes-base.supabaseTool",
+      "typeVersion": 1,
+      "position": [
+        1792,
+        48
+      ],
+      "id": "4c6d332d-daf7-4b87-9e9d-72bb37276b0b",
+      "name": "ventas",
+      "credentials": {
+        "supabaseApi": {
+          "id": "VoGoRuXzMLVJz79e",
+          "name": "COCOCOCO"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "Agent 1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Agent 1": {
+      "main": [
+        []
+      ]
+    },
+    "Simple Memory1": {
+      "ai_memory": [
+        [
+          {
+            "node": "Agent 1",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenRouter Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Agent 1",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "productos": {
+      "ai_tool": [
+        [
+          {
+            "node": "Agent 1",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "ventas": {
+      "ai_tool": [
+        [
+          {
+            "node": "Agent 1",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "fa38d841-0a63-4d61-9b1d-54b0d4d69c74",
+  "meta": {
+    "instanceId": "1f9b11bea38c6c2250cdbc3fe7e6ecfde8c538c2f959b214d81290712355cf11"
+  },
+  "id": "w8sL2XDfbkv8AdQj",
+  "tags": []
+}
