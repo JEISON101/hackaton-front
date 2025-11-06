@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { getAllVentas, getTopProductosMes } from "../services/ventaService";
-import { MdOutlineShoppingCartCheckout } from "react-icons/md";
+//import { MdOutlineShoppingCartCheckout } from "react-icons/md";
 import {
   FiCalendar,
   FiPackage,
