@@ -3,7 +3,7 @@ import { createChat } from "@n8n/chat";
 
 const ChatN8N: React.FC = () => {
   useEffect(() => {
-    const chat = createChat({
+    createChat({
       webhookUrl:
         "https://macarron01.app.n8n.cloud/webhook/e8156249-8860-4140-9880-1b61133b60d4/chat",
       mode: "window",

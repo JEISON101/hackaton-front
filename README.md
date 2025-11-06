@@ -1,73 +1,89 @@
-# React + TypeScript + Vite
+# 🚀 Bienvenido al proyecto: Hackaton Front - React (Vite) + TypeScript
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este proyecto fue creado con los siguientes objetivos principales:
 
-Currently, two official plugins are available:
+✅ Participar en el Hackaton FUP.
+🧠 Aplicar conocimientos avanzados en desarrollo web utilizando tecnologías modernas.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🎯 Función principal
 
-## React Compiler
+Gestionar de forma efectiva y dinámica los distintos módulos de la aplicación, incluyendo productos, clientes, ventas y recomendaciones.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🧱 Tecnologías utilizadas
 
-## Expanding the ESLint configuration
+- ⚛️ React (con Vite)
+- 🟦 TypeScript
+- 💅 TailwindCSS
+- 📦 npm para gestión de dependencias
+- 🔗 n8n para integración de chat y automatización
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 📦 Requisitos previos
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+Asegúrate de tener instaladas las siguientes herramientas:
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+- **Node.js** (versión: >= 22.14.0)
+  - Para verificar que lo tienes en tu máquina, ingresa al terminal y escribe `node -v`. Si no lo tienes, instálalo rápidamente.
+- **npm**
+  - Para verificar que lo tienes en tu máquina, ingresa al terminal y escribe `npm -v`. Si no lo tienes, instálalo rápidamente.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## 💥 Proceso de instalación
+
+Clona el repositorio:
+
+```bash
+git clone https://github.com/JEISON101/hackaton-front.git
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🎒 Instalación de dependencias
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+En la terminal del proyecto:
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
 ```
+
+## 🏃 Ejecución del proyecto
+
+Inicia el servidor de desarrollo:
+
+```bash
+npm run dev
+```
+
+## 🔗 Integración con n8n
+
+El proyecto incluye un chat automatizado utilizando n8n. Este chat está configurado para interactuar con un webhook que busca información de productos en la base de datos.
+
+
+
+## 🚧 Estructura del proyecto
+
+```
+src/
+├── assets/
+├── components/
+│   ├── ProductsContent.tsx
+│   ├── RenderVistas.tsx
+│   ├── RutaPrivada.tsx
+│   ├── SideBar.tsx
+├── context/
+│   ├── AuthContext.tsx
+├── pages/
+│   ├── AuthPage.tsx
+│   ├── Clientes.tsx
+│   ├── Compras.tsx
+│   ├── Dashboard.tsx
+│   ├── Landing.tsx
+│   ├── Productos.tsx
+│   ├── Recomendaciones.tsx
+│   ├── Sucursales.tsx
+│   ├── Ventas.tsx
+├── services/
+│   ├── authServices.ts
+│   ├── imagenService.ts
+├── utils/
+│   ├── supabase.ts
+├── App.tsx
+├── main.tsx
+```
+
