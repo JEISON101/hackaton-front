@@ -12,9 +12,9 @@ const AuthPage = () => {
   }
 
   return (
-    <div className="max-w-md w-full">
+    <div className="max-w-md w-full bg-transparent">
       {/* Card principal */}
-      <div className="w-full max-w-md bg-white/80 backdrop-blur-xl rounded-2xl shadow-2xl p-8 border border-white/30 transition-all duration-300">
+      <div className="w-full max-w-md bg-white/20 rounded-2xl shadow-2xl p-8 border border-white/30 transition-all duration-300">
         {/* Logo */}
         <div className="flex justify-center items-center mb-6">
           <div className="p-4 rounded-full bg-gradient-to-r from-cyan-400 to-purple-500 text-white shadow-md">
